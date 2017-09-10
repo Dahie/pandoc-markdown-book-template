@@ -22,9 +22,20 @@ brew install pandoc
 
 ### Create Book
 1. Change to this directory.
-2. Replace contents of `metadata.txt`, `contents.markdown`, and `cover.jpg` with your own content.
-3. Create your book with the following syntax:
+2. In `static/` directory, replace contents of `metadata.yml`, and `cover.jpg` with your own content.
+3. In `chapters/` directory, add you content. Use file name to order the files as shown in the example.
+4. Create your book with the following syntax below
+
+#### EPUB
+
 ```bash
-pandoc -S --toc --epub-embed-font='fonts/*.ttf' -o book.epub metadata.txt contents.markdown
+pandoc -S --epub-embed-font='fonts/*.ttf' -o target/book.epub static/metadata.yml chapters/*.md
 ```
-Your book will be exported as `book.epub`.
+Your book will be exported as`target/book.epub`.
+
+#### PDF
+
+```bash
+pandoc -S -o target/book.pdf static/metadata.yml chapters/*.md
+```
+Your book will be exported as`target/book.pdf`.
